@@ -15,7 +15,8 @@ st.set_page_config(
 )
 
 # Spreadsheet URL from user
-SHEET_URL = "https://docs.google.com/spreadsheets/d/196o1A0zn6YdDgfENaNbMxoqWEJuc02uzZTn-4yWAJ3U/edit?usp=sharing"
+SHEET_URL = "https://docs.google.com/spreadsheets/d/196o1A0zn6YdDgfENaNbMxoqWEJuc02uzZTz-4yWAJ3U/edit?usp=sharing"
+
 
 # --- AUTO REFRESH ---
 st_autorefresh(interval=300000, key="datarefresher")
