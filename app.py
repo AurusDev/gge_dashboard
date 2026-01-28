@@ -9,7 +9,7 @@ from styles import apply_gge_styles, render_header
 
 # --- CONFIGURATION ---
 st.set_page_config(
-    page_title="GGE Dashboard Premium",
+    page_title="Painel DOT 7 (GGE)",
     page_icon="assets/favicon.png",
     layout="wide"
 )
