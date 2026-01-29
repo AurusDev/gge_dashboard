@@ -23,7 +23,8 @@ def get_gspread_client():
             st.error("Credenciais (google_service_account or api_key) não encontradas em st.secrets.")
             return None
     except Exception as e:
-        st.error(f"Erro ao autenticar com Google Sheets: {e}")
+        st.error(f"❌ Erro crítico de autenticação: {e}")
+        st.info("💡 Dica: Verifique se as permissões da conta de serviço estão corretas no Google Cloud Console.")
         return None
 
 def load_data(spreadsheet_url):
@@ -53,7 +54,8 @@ def load_data(spreadsheet_url):
         df = pd.DataFrame(data)
         return df
     except Exception as e:
-        st.error(f"Erro ao carregar dados: {e}")
+        st.error(f"❌ Erro ao acessar a planilha: {e}")
+        st.info("💡 Dica: Verifique se a URL da planilha está correta e se o acesso foi compartilhado com o e-mail da conta de serviço.")
         return pd.DataFrame()
 
 def standardize_columns(df):
@@ -65,10 +67,10 @@ def standardize_columns(df):
 
     # Standard mapping (case-insensitive)
     mapping = {
-        'ano': ['ano', 'year', 'exercício'],
-        'mes': ['mês', 'mes', 'month', 'período'],
-        'unidade': ['unidade', 'campus', 'unidade escolar', 'escola', 'unidade_escolar'],
-        'data': ['data', 'date', 'timestamp']
+        'ano': ['ano', 'year', 'exercício', 'exercicio', 'annee'],
+        'mes': ['mês', 'mes', 'month', 'período', 'periodo', 'mois'],
+        'unidade': ['unidade', 'campus', 'unidade escolar', 'escola', 'unidade_escolar', 'local', 'site'],
+        'data': ['data', 'date', 'timestamp', 'criado em', 'created_at', 'horário', 'horario']
     }
     
     new_cols = {}
