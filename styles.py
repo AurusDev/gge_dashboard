@@ -222,12 +222,12 @@ def apply_gge_styles():
             }}
 
             /* Tab Styling - Larger and more 'Boniteza' */
-            .stTabs [data-baseweb="tab-list"] {
+            .stTabs [data-baseweb="tab-list"] {{
                 gap: 24px;
                 background-color: transparent;
-            }
+            }}
 
-            .stTabs [data-baseweb="tab"] {
+            .stTabs [data-baseweb="tab"] {{
                 height: 50px;
                 white-space: pre;
                 background-color: transparent !important;
@@ -235,12 +235,12 @@ def apply_gge_styles():
                 gap: 8px;
                 padding-top: 10px;
                 padding-bottom: 10px;
-            }
+            }}
 
-            .stTabs [aria-selected="true"] {
+            .stTabs [aria-selected="true"] {{
                 background-color: rgba(227, 28, 36, 0.1) !important;
                 border-bottom: 3px solid {gge_red} !important;
-            }
+            }}
             
             .stTabs [data-baseweb="tab"] div p {{
                 font-size: 1.6rem !important;
