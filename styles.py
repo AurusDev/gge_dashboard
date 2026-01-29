@@ -162,32 +162,24 @@ def apply_gge_styles():
                 gap: 15px;
             }}
 
-            /* Tooltip container */
+            /* Tooltip container (now caption container) */
             .tooltip {{
               position: relative;
-              display: inline-block;
+              width: 100%;
+              display: block;
             }}
 
             .tooltip .tooltiptext {{
-              visibility: hidden;
-              width: 200px;
-              background-color: #1E293B;
-              color: #F8FAFC;
-              text-align: center;
-              border-radius: 8px;
-              padding: 10px;
-              position: absolute;
-              z-index: 1000;
-              bottom: 125%;
-              left: 50%;
-              margin-left: -100px;
-              opacity: 0;
-              transition: opacity 0.3s;
-              font-size: 0.8rem;
+              visibility: visible;
+              display: block;
+              width: 100%;
+              color: {gge_text_muted};
+              text-align: left;
+              margin-top: 10px;
+              font-size: 0.85rem;
               font-weight: 400;
-              border: 1px solid {gge_glass_border};
-              box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-              pointer-events: none;
+              line-height: 1.4;
+              opacity: 0.9;
             }}
 
             .tooltip:hover .tooltiptext {{
