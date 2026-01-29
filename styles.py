@@ -72,7 +72,7 @@ def apply_gge_styles():
             }}
 
             .kpi-label {{
-                font-size: 1rem;
+                font-size: 0.9rem;
                 color: {gge_text_muted};
                 text-transform: uppercase;
                 letter-spacing: 0.12em;
@@ -109,7 +109,7 @@ def apply_gge_styles():
 
             .header-text h1 {{
                 margin: 0;
-                font-size: 3.2rem;
+                font-size: 2.8rem;
                 background: linear-gradient(90deg, #FFFFFF, #CBD5E1);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -134,7 +134,7 @@ def apply_gge_styles():
             }}
 
             .chart-title {{
-                font-size: 1.6rem;
+                font-size: 1.4rem;
                 font-weight: 600;
                 color: {gge_text_main};
                 margin-bottom: 20px;
@@ -235,7 +235,7 @@ def apply_gge_styles():
             }}
             
             .stTabs [data-baseweb="tab"] div p {{
-                font-size: 1.6rem !important;
+                font-size: 1.25rem !important;
                 font-weight: 700 !important;
                 color: {gge_text_muted} !important;
             }}
