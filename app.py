@@ -219,8 +219,8 @@ else:
                 <div class='chart-title'><i class='fas fa-chart-bar'></i> Volume por Unidade</div>
         """, unsafe_allow_html=True)
         if 'unidade' in filtered_df.columns:
-            unit_data = filtered_df.groupby('unidade').size().reset_index(name='Problemas')
-            fig_bar = px.bar(unit_data, x='unidade', y='Problemas')
+            unit_data = filtered_df.groupby('unidade').size().reset_index(name='Problemas').sort_values('Problemas', ascending=False)
+            fig_bar = px.bar(unit_data, x='unidade', y='Problemas', category_orders={"unidade": unit_data['unidade'].tolist()})
             fig_bar.update_traces(marker_color='#0B3D91', marker_line_color='#E31C24', marker_line_width=1.5)
             st.plotly_chart(apply_plotly_theme(fig_bar), use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
