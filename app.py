@@ -187,7 +187,8 @@ else:
             fig_line.update_traces(
                 line=dict(color='#E31C24', width=3),
                 marker=dict(size=8, color='#0B3D91', line=dict(width=2, color='white')),
-                fill='tozeroy', fillcolor='rgba(227, 28, 36, 0.1)'
+                fill='tozeroy', fillcolor='rgba(227, 28, 36, 0.1)',
+                hovertemplate="<b>Mês:</b> %{x}<br><b>Registros:</b> %{y}<extra></extra>"
             )
             st.plotly_chart(apply_plotly_theme(fig_line), use_container_width=True)
         else:
@@ -205,7 +206,8 @@ else:
             fig_donut = px.pie(occ_types, values='Total', names='Tipo', hole=0.7)
             fig_donut.update_traces(
                 textinfo='none', 
-                marker=dict(colors=['#0B3D91', '#E31C24', '#1E293B', '#334155', '#475569'])
+                marker=dict(colors=['#0B3D91', '#E31C24', '#1E293B', '#334155', '#475569']),
+                hovertemplate="<b>Tipo:</b> %{label}<br><b>Total:</b> %{value}<extra></extra>"
             )
             st.plotly_chart(apply_plotly_theme(fig_donut), use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
@@ -221,7 +223,12 @@ else:
         if 'unidade' in filtered_df.columns:
             unit_data = filtered_df.groupby('unidade').size().reset_index(name='Problemas').sort_values('Problemas', ascending=False)
             fig_bar = px.bar(unit_data, x='unidade', y='Problemas', category_orders={"unidade": unit_data['unidade'].tolist()})
-            fig_bar.update_traces(marker_color='#0B3D91', marker_line_color='#E31C24', marker_line_width=1.5)
+            fig_bar.update_traces(
+                marker_color='#0B3D91', 
+                marker_line_color='#E31C24', 
+                marker_line_width=1.5,
+                hovertemplate="<b>Unidade:</b> %{x}<br><b>Problemas:</b> %{y}<extra></extra>"
+            )
             st.plotly_chart(apply_plotly_theme(fig_bar), use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -234,7 +241,11 @@ else:
             status_data = filtered_df[status_col].value_counts().reset_index()
             status_data.columns = ['Status', 'Total']
             fig_status = px.pie(status_data, values='Total', names='Status', hole=0.8)
-            fig_status.update_traces(textinfo='none', marker=dict(colors=['#0B3D91', '#E31C24']))
+            fig_status.update_traces(
+                textinfo='none', 
+                marker=dict(colors=['#0B3D91', '#E31C24']),
+                hovertemplate="<b>Status:</b> %{label}<br><b>Total:</b> %{value}<extra></extra>"
+            )
             
             # Center text for donut
             resolved_count = len(filtered_df[filtered_df[status_col].astype(str).str.upper() == 'RESOLVIDO'])
