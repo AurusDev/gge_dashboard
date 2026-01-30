@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
+import pytz
 from streamlit_autorefresh import st_autorefresh
 from data_loader import load_data, standardize_columns
 from styles import apply_gge_styles, render_header
@@ -265,9 +266,12 @@ else:
             st.dataframe(perf_df, use_container_width=True, hide_index=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # Footer
+    # Footer with timezone correction
+    brazil_tz = pytz.timezone('America/Sao_Paulo')
+    now_br = datetime.now(brazil_tz)
+    
     st.markdown(f"""
         <div style='text-align: center; color: #94A3B8; font-size: 0.8em; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;'>
-            <i class='fas fa-clock'></i> Última atualização: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')} | <b>GGE BI Solution</b>
+            <i class='fas fa-clock'></i> Última atualização: {now_br.strftime('%d/%m/%Y %H:%M:%S')} | <b>GGE BI Solution</b>
         </div>
     """, unsafe_allow_html=True)

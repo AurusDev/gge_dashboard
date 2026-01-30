@@ -101,5 +101,7 @@ def standardize_columns(df):
         df_mapped['ano'] = df_mapped['ano'].astype(str)
     if 'mes' in df_mapped.columns:
         df_mapped['mes'] = df_mapped['mes'].astype(str)
+    if 'unidade' in df_mapped.columns:
+        df_mapped['unidade'] = df_mapped['unidade'].astype(str).str.strip().str.upper()
         
     return df_mapped
