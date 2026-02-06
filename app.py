@@ -69,7 +69,12 @@ else:
         selected_year = st.selectbox("📅 Ano", anos)
     
     with f_col2:
-        meses = ["Todos os meses"] + sorted(df['mes'].unique().tolist()) if 'mes' in df.columns else ["Todos os meses"]
+        month_order = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ]
+        available_months = sorted(df['mes'].unique().tolist(), key=lambda m: month_order.index(m) if m in month_order else 99) if 'mes' in df.columns else []
+        meses = ["Todos os meses"] + available_months
         selected_month = st.selectbox("📆 Mês", meses)
         
     with f_col3:
@@ -263,7 +268,7 @@ else:
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
         display_cols = ['data', 'unidade', occ_col, status_col]
         display_cols = [c for c in display_cols if c in filtered_df.columns]
-        st.dataframe(filtered_df[display_cols].head(15), use_container_width=True, hide_index=True)
+        st.dataframe(filtered_df[display_cols], use_container_width=True, hide_index=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
     with tab2:

@@ -93,6 +93,16 @@ def standardize_columns(df):
                 df_mapped['ano'] = df_mapped['data_dt'].dt.year.astype(str)
             if 'mes' not in df_mapped.columns:
                 df_mapped['mes'] = df_mapped['data_dt'].dt.month_name()
+            
+            # Map month names to Portuguese
+            month_map = {
+                'January': 'Janeiro', 'February': 'Fevereiro', 'March': 'Março',
+                'April': 'Abril', 'May': 'Maio', 'June': 'Junho',
+                'July': 'Julho', 'August': 'Agosto', 'September': 'Setembro',
+                'October': 'Outubro', 'November': 'Novembro', 'December': 'Dezembro'
+            }
+            if 'mes' in df_mapped.columns:
+                df_mapped['mes'] = df_mapped['mes'].replace(month_map)
         except:
             pass
             
